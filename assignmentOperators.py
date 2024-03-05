@@ -1,6 +1,6 @@
 '''
  Assignment operators
- equal to(=)
+ assign(=)
 addition(+=)
 subtraction(-=)
 multiplication(*=)
