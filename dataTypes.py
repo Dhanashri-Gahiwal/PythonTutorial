@@ -11,7 +11,8 @@ Sequence
 Dictionary(mutable data type)
 Set(immutable data type)
 --- mutable means changeable and immutable means not changeable ---
---- type() function is used to check the data type of variable
+--- type() function is used to check the data type of variable ---
+--- byte array is a mutable data type ---
 '''
 int1 = 2
 print(int1,type(int1))
