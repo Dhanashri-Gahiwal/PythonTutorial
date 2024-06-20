@@ -2,7 +2,7 @@
 membership operators
 in
 not in
---- membership operators are used with string list tuple set dictionary ---
+--- membership operators are used with string, list, tuple, set, dictionary ---
 '''
 
 str = 'Hello'
