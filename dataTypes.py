@@ -8,8 +8,8 @@ Sequence
     string(immutable data type)
     list(mutable data type)
     tuple(immutable data type)
-Dictionary(mutable data type)
-Set(immutable data type)
+Dictionary(mutable,unordered,unindexed data type)
+Set(immutable,unordered,unindexed data type)
 --- mutable means changeable and immutable means not changeable ---
 --- type() function is used to check the data type of variable ---
 --- byte array is a mutable data type ---
