@@ -1,0 +1,86 @@
+step1: create folder "django" & open it with vs code editor then open terminal
+
+step2: create virtual environment & activate it
+        python -m venv myenv
+        cd myenv
+        Scripts/activate
+
+step3: install django
+        pip install django
+
+step4: create django project "bookstore"
+        django-admin startproject bookstore .
+
+step5: create app
+        django-admin startapp books
+
+step6: open "settings.py" file in "bookstore" project & add "books" app in INSTALLED APPS
+        INSTALLED_APPS = [
+            'books.apps.BooksConfig',
+        ]
+
+step7: run server
+        python manage.py runserver
+
+step8: create database "bookstore" in postgresql using "pgadmin4"
+
+step9: Install "psycopg2" library for postgresql database
+        pip install psycopg2
+
+step10: open "settings.py" file in "bookstore" project & connect postgresql database
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': 'bookstore',
+                'USER': 'postgres',
+                'PASSWORD': 'root',
+                'HOST': 'localhost'
+            }
+        }
+
+step11: open "models.py" file in "books" app & create "Book" model
+        class Book(models.Model):
+            booktitle = models.CharField(max_length=50)
+            bookdetail = models.CharField(max_length=150)
+            bookauthor = models.CharField(max_length=50)
+            bookimage = models.ImageField(upload_to='book_images/')
+            bookpath = models.FileField(upload_to='book_path/')
+
+            def __str__(self):
+                return self.booktitle
+
+step12: install "pillow" library for "ImageField"
+        pip install pillow
+
+step13: run migrations(it add the tables in database)
+        python manage.py makemigrations books
+        python manage.py migrate
+
+step14: create super user for active django admin panel
+        python manage.py createsuperuser
+
+step15: open "admin.py" file in "books" app & register "Book" model & run server
+        from .models import Book
+        admin.site.register(Book)
+
+step16: create "templates" folder in "books" app 
+
+step17: create "index.html" file in "templates" folder
+
+step18: open "views.py" file in "books" app & create "index" view for render html page
+        def index(request):
+                return render(request,'index.html')
+
+step19: create "urls.py" file in "books" app & add url of "index" view
+        from django.urls import path
+        from .import views
+        urlpatterns = [
+                path('',views.index,name='index'),
+        ]
+
+step20: open "urls.py" file in "bookstore" project & include urls of "books" app & run server
+        from django.urls import path,include
+        urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('',include('contact.urls'))
+        ]
