@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<div class="col-12">
+    <div>
+        <h3 class="text-center">Logout Page</h3>
+    </div>
+    {% for message in messages %}
+    <div>
+        <p class="alert alert-success">{{ message }}</p>
+    </div>
+    {% endfor %}
+    <div>
+        <p>Logout Successfully</p>
+    </div>
+</div>
+{% endblock %}

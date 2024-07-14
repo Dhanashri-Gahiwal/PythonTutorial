@@ -25,20 +25,28 @@
         <div class="col-12">
           <nav class="navbar bg-light">
             <div class="container">
-              <a class="navbar-brand">Contact Keeper</a>
-              <form class="d-flex" role="search">
-                <button
-                  class="btn btn-outline-success"
-                  type="button"
-                  data-bs-toggle="modal"
-                  data-bs-target="#contactModal"
-                >
-                  Add Contact
-                </button>
-              </form>
+              <a class="navbar-brand">Contact Keeper {{ user.username }}</a>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <form method="POST" action="{%  url 'logout' %}">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-outline-danger">Logout</button>
+                    </form>
+                  </li>
+                </ul>
             </div>
           </nav>
           <!-- Modal -->
+          <form class="d-flex mt-4 mb-0" role="search">
+            <button
+              class="btn btn-outline-success"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#contactModal"
+            >
+              Add Contact
+            </button>
+          </form>
           <div
             class="modal modal-lg fade"
             id="contactModal"
@@ -131,11 +139,8 @@
         {% for message in messages %}
         <h3 class="alert alert-success">{{ message }}</h3>
         {% endfor %}
-        <div class="row">
-            {% block content %}
-            {% endblock %}
-        </div>
-    </div>
+        <div class="row">{% block content %} {% endblock %}</div>
+      </div>
     </div>
     <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script
@@ -147,7 +152,7 @@
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.8/js/dataTables.bootstrap5.js"></script>
     <script>
-      new DataTable('#example');
+      new DataTable("#example");
     </script>
   </body>
 </html>
