@@ -9,10 +9,3 @@ def index(request):
     # return render(request,'index.html')
     books = Book.objects
     return render(request,'index.html',{'books':books})
-
-def bookdata(request):
-    if request.method == 'POST':
-        form = SaveBook(request.POST or None)
-        if form.is_valid():
-            form.save()
-    return render(request,'bookdata.html')
